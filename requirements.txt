@@ -1,0 +1,11 @@
+ultralytics
+opencv-python
+streamlit
+fastapi
+uvicorn
+plotly
+pandas
+numpy
+pillow
+paddleocr
+paddlepaddle

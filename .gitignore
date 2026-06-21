@@ -1,43 +1,14 @@
-# Python
+venv/
+.venv/
+
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
 
-# Virtual Environment
-venv/
+outputs/
+runs/
+
+models/*.pt
+
 .env
 
-# Jupyter
-.ipynb_checkpoints/
-
-# VS Code
-.vscode/
-
-# PyCharm
-.idea/
-
-# Outputs
-outputs/*
-!outputs/.gitkeep
-
-# Models
-*.pt
-*.pth
-
-# Dataset
-data/*
-!data/.gitkeep
-
-# System
 .DS_Store
-Thumbs.db
-
-# Logs
-*.log
-
-# Streamlit cache
-.streamlit/cache/
-
-# Environment variables
-.env
