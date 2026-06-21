@@ -26,3 +26,31 @@ def analyze_violations(vehicle_counts):
             })
 
     return violations
+
+def helmet_violation_check(
+        helmet_detections):
+
+    violations = []
+
+    for item in helmet_detections:
+
+        cls = item["class"].lower()
+
+        if cls in [
+
+            "no_helmet",
+
+            "without_helmet"
+
+        ]:
+
+            violations.append({
+
+                "type":
+                "Helmet Violation",
+
+                "severity":
+                "High"
+            })
+
+    return violations

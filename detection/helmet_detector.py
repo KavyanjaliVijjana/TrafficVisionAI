@@ -1,35 +1,42 @@
 from ultralytics import YOLO
 
-helmet_model = YOLO("models/helmet.pt")
+helmet_model = YOLO(
+    "models/helmet.pt"
+)
+
+print(helmet_model.names)
 
 def detect_helmet(image_path):
 
     results = helmet_model(image_path)
 
-    helmets = 0
-    no_helmets = 0
+    detections = []
 
     for result in results:
 
         for box in result.boxes:
 
-            cls = int(box.cls[0])
+            cls_id = int(box.cls[0])
 
-            class_name = helmet_model.names[cls]
+            cls_name = helmet_model.names[
+                cls_id
+            ]
 
-            if class_name.lower() in [
-                "helmet",
-                "with_helmet"
-            ]:
-                helmets += 1
+            confidence = float(
+                box.conf[0]
+            )
 
-            elif class_name.lower() in [
-                "without_helmet",
-                "no_helmet"
-            ]:
-                no_helmets += 1
+            detections.append({
 
-    return {
-        "helmets": helmets,
-        "no_helmets": no_helmets
-    }
+                "class":
+                cls_name,
+
+                "confidence":
+                round(confidence, 2)
+            })
+    # SAVE ANNOTATED IMAGE
+    results[0].save(
+        filename="outputs/helmet_result.jpg"
+    )
+
+    return detections
