@@ -1,0 +1,17 @@
+[
+    {
+        "case_id":"TVA001",
+        "plate_number":"TS09AB1234",
+        "violation":"Helmet Violation"
+    },
+    {
+        "case_id":"TVA002",
+        "plate_number":"TS09AB1234",
+        "violation":"Triple Riding"
+    },
+    {
+        "case_id":"TVA003",
+        "plate_number":"TS11XY5678",
+        "violation":"Helmet Violation"
+    }
+]
