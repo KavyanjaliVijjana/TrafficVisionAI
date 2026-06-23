@@ -1,7 +1,9 @@
-# test_ocr.py
+from detection.plate_ocr import (
+    extract_text
+)
 
-from paddleocr import PaddleOCR
+text = extract_text(
+    "test_images/plate.jpeg"
+)
 
-ocr = PaddleOCR(use_angle_cls=True)
-
-print("OCR Loaded Successfully")
+print(text)
