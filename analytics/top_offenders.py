@@ -1,6 +1,8 @@
+# analytics/top_offenders.py
+
 import json
 
-def calculate_risk():
+def get_top_offenders():
 
     with open(
         "data/violations.json",
@@ -22,17 +24,8 @@ def calculate_risk():
             ) + 1
         )
 
-    return offenders
-
-
-def calculate_risk_score(
-        violation_count):
-
-    if violation_count >= 5:
-        return "High"
-
-    elif violation_count >= 3:
-        return "Medium"
-
-    else:
-        return "Low"
+    return sorted(
+        offenders.items(),
+        key=lambda x: x[1],
+        reverse=True
+    )

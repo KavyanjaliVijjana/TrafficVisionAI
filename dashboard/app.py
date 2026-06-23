@@ -1,9 +1,27 @@
+import sys
+import os
+
+project_root = os.path.dirname(
+    os.path.dirname(
+        os.path.abspath(__file__)
+    )
+)
+
+sys.path.append(project_root)
+
+
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 import json
 import os
 from PIL import Image
+
+from analytics.risk_score import (
+    calculate_risk,
+    calculate_risk_score
+)
 
 # ==========================
 # PAGE CONFIG
@@ -194,6 +212,24 @@ elif page == "Analytics":
     )
 
     st.dataframe(df)
+
+    st.subheader(
+        "Repeat Offenders"
+    )
+
+    offenders = calculate_risk()
+
+    for plate, count in offenders.items():
+
+        risk = calculate_risk_score(
+            count
+        )
+
+        st.write(
+            f"{plate} | "
+            f"Violations: {count} | "
+            f"Risk: {risk}"
+        )
 
 # ==========================
 # RECOMMENDATIONS PAGE
